@@ -10,7 +10,8 @@ import Foundation
 class ConexionAPI{
     static func descargar_datos<TipoDeDato: Codable>(url: String) async -> TipoDeDato?{
         do {
-            guard let url = URL(string: url) else { throw ErroresDeRed.url_mala }
+            guard let url = URL(string: url) else { throw ErroresDeRed.url_mala } // <- Aqui esta mal
+            
             let (datos, respuesta) = try await URLSession.shared.data(from: url)
             guard let respuesta = respuesta as? HTTPURLResponse else { throw ErroresDeRed.respuesta_erronea }
             guard respuesta.statusCode >= 200 && respuesta.statusCode < 300 else { throw ErroresDeRed.estado_negativo }
