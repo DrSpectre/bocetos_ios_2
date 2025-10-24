@@ -1,14 +1,14 @@
 //
-//  json_placeholder.swift
-//  control_navegacion
+//  servicio_web.swift
+//  nueva_app_con_api
 //
-//  Created by Jadzia Gallegos on 06/10/25.
+//  Created by Jadzia Gallegos on 20/10/25.
 //
 
 import Foundation
 
-class ServicioWeb{
-    func descargar_datos<TipoDeDato: Codable>(url: String) async -> TipoDeDato?{
+class ConexionAPI{
+    static func descargar_datos<TipoDeDato: Codable>(url: String) async -> TipoDeDato?{
         do {
             guard let url = URL(string: url) else { throw ErroresDeRed.url_mala }
             let (datos, respuesta) = try await URLSession.shared.data(from: url)
@@ -43,3 +43,7 @@ class ServicioWeb{
         return nil
     }
 }
+
+
+
+

@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct PantallaNoticias: View {
-    @State var lista_noticias = noticias
     @Environment(ControladorGeneral.self) var controlador
     
     var body: some View {
