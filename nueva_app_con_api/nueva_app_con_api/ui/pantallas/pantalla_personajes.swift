@@ -13,9 +13,25 @@ struct PantallaPersonajes: View {
     var body: some View {
         Spacer()
         
-        ForEach(controlador.personajes){ personaje in
-            Text("Yo soy \(personaje.name)")
+        NavigationStack{
+            ScrollView{
+                ForEach(controlador.personajes){ personaje in
+                    NavigationLink{
+                        Text("Pantalla de el personaje \(personaje.name)")
+                        Text("El chiste es: \(controlador.chiste)")
+                            .onAppear{
+                                controlador.descargar_chiste()
+                            }
+                    }
+                    label: {
+                        TarjetaPersonaje(personaje: personaje)
+                    }
+                    .buttonStyle(.plain)
+                    
+                }
+            }
         }
+        
         
         Spacer()
         
